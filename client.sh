@@ -41,18 +41,30 @@ for item in $(echo "$JSON" | jq -c '.[]'); do
         if [[ "$OS_NAME" == "MINGW64" ]]; then
             echo "Please install Node.js."
         elif [[ "$OS_NAME" == "Linux" ]]; then
-            # start
             if command -v notify-send &>/dev/null; then
+                if [ "$SOUND" = "true" ]; then
+                    play /tmp/crushabusesound.mp3
+                    notify-send 'We found you a crush!' "Check $permalink for more details."
+                    echo $TIMESTAMP >~/.crushabusets
+                else
+                    notify-send 'We found you a crush!' "Check $permalink for more details."
+                    echo $TIMESTAMP >~/.crushabusets
+                fi
                 notify-send 'We found you a crush!' "Check $permalink for more details."
                 echo $TIMESTAMP >~/.crushabusets
             else
                 echo "Please install Node.js or you can also install libnotify(-bin), but that's ill-advised."
             fi
-            #end
         elif [[ "$OS_NAME" == "Darwin" ]]; then
             if command -v terminal-notifier &>/dev/null; then
-                terminal-notifier -title 'We found you a crush' -message 'Click this notification to open slack!' -open $permalink
-                echo $TIMESTAMP > ~/.crushabusets
+                if [ "$SOUND" = "true" ]; then
+                    play /tmp/crushabusesound.mp3
+                    terminal-notifier -title 'We found you a crush' -message 'Click this notification to open slack!' -open $permalink
+                    echo $TIMESTAMP >~/.crushabusets
+                else
+                    terminal-notifier -title 'We found you a crush' -message 'Click this notification to open slack!' -open $permalink
+                    echo $TIMESTAMP >~/.crushabusets
+                fi
             else
                 echo "Please install Node.js or install terminal-notifier via brew (or rubygems)."
             fi
