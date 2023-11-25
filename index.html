@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href=" https://cdn.jsdelivr.net/npm/github-markdown-css@5.4.0/github-markdown.min.css "
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/go.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="markdown-body">
+    <h1>crushabuse</h1>
+    <p>crushabuse is a lil script to make finding ur crushes easier</p>
+    <p>it has two things</p>
+    <ul>
+        <li><p>server: the server that uses slack-bolt-js</p></li>
+        <li><p>client: bourne again unix shell script that supports windows (node), macos (node or terminal-notifier), and linux (node or libnotify/libnotify-bin)</p></li>
+    </ul>
+     <h2>prerequisites</h2>
+     <pre><code class="language-bash"># sox is optional, unless you want funny dating app sound (it i grinder btwwww)
+# you can exclude libnotify and terminal-notifier if you have node installed
+sudo dnf install libnotify sox # debain/ubuntu 
+sudo apk add libnotify sox # alpine based, ish, termux, etc
+sudo dnf install libnotify sox # fedora and other red hat distros
+brew install terminal-notifier sox # macos
+# check https://pkgs.org/search/?q=libnotify if yours isn't listed here</code></pre>
+    </article>
+    <footer>
+      <script>
+        hljs.highlightAll();
+      </script>
+    </footer>
+  </body>
+</html>
