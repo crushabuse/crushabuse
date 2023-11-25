@@ -1,0 +1,56 @@
+{
+  "name": "crushabuse",
+  "version": "1.0.0",
+  "main": "gui.js",
+  "description": "crushabuse is a lil script to make finding ur crushes easier",
+  "homepage": "https://crushabuse.xyz",
+  "author": {
+    "name": "crushabyse.xyz",
+    "email": "crushabuse@protonmail.com",
+    "url": "https://crushabuse.xyz"
+  },
+  "scripts": {
+    "electron": "electron gui.js",
+    "dist": "electron-builder",
+    "dist:linux": "npx electron-builder -l",
+    "dist:window": "npx electron-builder -w",
+    "dist:macos": "npx electron-builder -m",
+    "dist:all": "npx electron-builder -wml"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "x.x"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.15.0",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "electron": "^27.1.2",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "productName": "crushabuse",
+    "executableName": "crushabuse",
+    "copyright": "Copyright © 2022 crushabuse.xyz. Licensed under MIT.",
+    "appId": "crushabuse.xyz",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
+    "dmg": {
+      "icon": "icon.png"
+    },
+    "linux": {
+      "synopsis": "crushabuse is a lil script to make finding ur crushes easier.",
+      "description": "crushabuse is a lil script to make finding ur crushes easier.",
+      "category": "Science",
+      "icon": "icon.png"
+    },
+    "directories": {
+      "buildResources": "gui"
+    }
+  }
+}
