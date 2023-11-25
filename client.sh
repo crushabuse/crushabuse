@@ -10,9 +10,9 @@ NAME="joe biden"
 HASH=$(echo -n $NAME | sha256sum | awk '{print $1}')
 TIMESTAMP=$(date +%s)
 if [ -f ~/.crushabusets ]; then
-    JSON=$(curl -s --no-progress-meter http://localhost:3000/api/check/$HASH/$(cat ~/.crushabusets))
+    JSON=$(curl -s --no-progress-meter https://crushabuse.glitch.me/api/check/$HASH/$(cat ~/.crushabusets))
 else
-    JSON=$(curl -s --no-progress-meter http://localhost:3000/api/check/$HASH)
+    JSON=$(curl -s --no-progress-meter https://crushabuse.glitch.me/api/check/$HASH)
 fi
 OS_NAME=$(uname -s)
 SOUND=true # Plays the grindr notification sound if a crush is detected (default: false). Be weary, it's loud. Also requires sox
