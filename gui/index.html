@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href=" https://cdn.jsdelivr.net/npm/github-markdown-css@5.4.0/github-markdown.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="markdown-body">
+      <h1>crushabuse</h1>
+
+      <p>...but it's a gui!</p>
+      <p>...buuuut a couple of tips</p>
+      <ul>
+        <li>ppl don't usually include middle names</li>
+        <li>don't add any white space</li>
+        <li>if you have a hypenated name, try it w/o the second part</li>
+      </ul>
+      <input placeholder="what's ur name, champ?" id="champ" />
+      <button onclick="example()">go find me someone</button>
+      <h2>list of crushes found</h2>
+      <div id="crushes">
+        <ul id="james"></ul>
+      </div>
+    </article>
+    <footer>
+      <script>
+        async function sha256(message) {
+          // encode as UTF-8
+          const msgBuffer = new TextEncoder().encode(message);
+
+          // hash the message
+          const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+
+          // convert ArrayBuffer to Array
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+          // convert bytes to hex string
+          const hashHex = hashArray
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join("");
+          return hashHex;
+        }
+        async function example() {
+          document.getElementById("james").innerHTML =
+            "Loading... Please wait...";
+          const hash = await sha256(
+            document.getElementById("champ").value.toLowerCase().toString()
+          );
+
+          fetch("https://crushabuse.glitch.me/api/check/" + hash)
+            .then((chungus) => chungus.json())
+            .then((chungus) => {
+              document.getElementById("james").innerHTML = "";
+              if (chungus.length == 0)
+                document.getElementById("james").innerHTML =
+                  "sorry, no results found for " +
+                  document.getElementById("champ").value;
+              chungus.forEach((chung) => {
+                document.getElementById("james").innerHTML += `<li><a href="${
+                  chung.permalink
+                }">${chung.permalink}</a> (posted ${new Date(
+                  chung.date * 1000
+                ).toLocaleString("en-US", {
+                  timeStyle: "short",
+                  dateStyle: "long",
+                })})</li>`;
+              });
+            });
+        }
+      </script>
+    </footer>
+  </body>
+</html>
