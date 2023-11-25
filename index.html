@@ -57,7 +57,7 @@ chmod +x /bin/crushabuse
 <p>Open crushabuse, make sure to get <code>NAME</code> to your name and you can enable <code>SOUND</code>, but see the code for more details.</p>
 <p>This is meant to run as a daemon (background process), but it does not check automatically, only on invocation.</p>
 <p>This is a little hack to make it run every 5 minutes in the background (requires node).</p>
-<pre><code class="language-bash">nohup node -e "function main(){ require('node:child_process').execSync('bash ./client.sh')};main();setInterval(main, 1000* 60 * 5)" > /dev/null 2>&1 &</code></pre>
+<pre><code class="language-bash">nohup node -e "function main(){ require('node:child_process').execSync('crushabuse')};main();setInterval(main, 1000* 60 * 5)" > /dev/null 2>&1 &</code></pre>
 <p>You can also use crontab, but we're unsure if notifications will work well.</p>
     </article>
     <footer>
