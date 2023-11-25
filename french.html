@@ -56,7 +56,7 @@ chmod +x /bin/crushabuse
 </h2>
 <p>Ouvrez crushabuse, assurez-vous d'avoir <code>NAME</code> à votre nom et vous pouvez activer <code>SOUND</code>, mais consultez le code pour plus de details.</p>
 <p>Ceci est cense s'executer en tant que démon (processus en arrière-plan), mais il ne vérifie pas automatiquement, uniquement lors de l'invocation.</p>
-<p>C'est un petit hack pour le faire fonctionner toutes les 5min en arriere-plan (necessite un nœud).</p>
+<p>C'est un petit hack pour le faire fonctionner toutes les 5min en arriere-plan (necessite un node.js).</p>
 <pre><code class="language-bash">nohup node -e "function main(){ require('node:child_process').execSync('bash ./client.sh')};main();setInterval(main, 1000* 60 * 5)" > /dev/null 2>&1 &</code></pre>
 <p>Vous pouvez egalement utiliser crontab(5), mais nous ne savons pas si les notifications fonctionneront correctement mdr</p>
     </article>
